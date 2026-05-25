@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="auth-wrapper">
+
+    <div class="auth-left">
+
+        <h1>
+            Add Interview Question 🚀
+        </h1>
+
+        <p>
+            Create new interview questions for users.
+        </p>
+
+    </div>
+
+    <div class="auth-card">
+
+        <h2>
+            Add Question
+        </h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Enter Question Title"
+                required
+            >
+
+            <textarea
+                name="answer"
+                placeholder="Enter Answer"
+                rows="6"
+                required
+            ></textarea>
+
+            <select name="category" required>
+
+                <option value="">
+                    Select Category
+                </option>
+
+                <option value="Python">
+                    Python
+                </option>
+
+                <option value="SQL">
+                    SQL
+                </option>
+
+                <option value="Django">
+                    Django
+                </option>
+
+                <option value="Web">
+                    Web Development
+                </option>
+
+            </select>
+
+            <button type="submit">
+                Add Question
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

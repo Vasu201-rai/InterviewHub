@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                {{ question.category }}
+            </span>
+
+            <h1>
+                {{ question.title }}
+            </h1>
+
+            <p>
+                Read and understand the complete interview answer below.
+            </p>
+
+        </div>
+
+    </section>
+
+    <div class="question-card">
+
+        <div class="answer-box show">
+
+            {{ question.answer }}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

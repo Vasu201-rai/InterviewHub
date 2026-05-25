@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+
+    <h2>Edit Question</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>Category</label>
+
+        <br><br>
+
+        <select name="category">
+
+            <option value="Python">Python</option>
+
+            <option value="SQL">SQL</option>
+
+            <option value="Django">Django</option>
+
+            <option value="Web">Web Development</option>
+
+        </select>
+
+        <br><br>
+
+        <input
+            type="text"
+            name="title"
+            value="{{ question.title }}"
+        >
+
+        <br><br>
+
+        <textarea
+            name="answer"
+            rows="5"
+            cols="50"
+        >{{ question.answer }}</textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Update Question
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

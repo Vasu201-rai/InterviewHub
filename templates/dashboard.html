@@ -1,0 +1,304 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                🚀 Smart Interview Preparation Platform
+            </span>
+
+            <h1>
+                Master Your Technical Interviews
+            </h1>
+
+            <p>
+                Practice interview questions, save answers, and become job ready with a modern coding preparation platform.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button type="button" class="primary-btn">
+                    Start Practice
+                </button>
+
+                <button type="button" class="secondary-btn">
+                    Explore Questions
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="hero-card">
+
+            <h2>
+                {{ total }}
+            </h2>
+
+            <p>
+                Total Questions
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- SEARCH -->
+
+    <section class="search-section">
+
+        <form method="GET" class="search-form">
+
+            <input
+                type="text"
+                name="search"
+                placeholder="Search interview questions..."
+                value="{{ request.GET.search }}"
+            >
+
+            <select name="category">
+
+                <option value="">
+                    All Categories
+                </option>
+
+                <option value="Python">
+                    Python
+                </option>
+
+                <option value="SQL">
+                    SQL
+                </option>
+
+                <option value="Django">
+                    Django
+                </option>
+
+                <option value="Web">
+                    Web Development
+                </option>
+
+            </select>
+
+            <button type="submit">
+                Search
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- STATS -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🐍
+            </div>
+
+            <div>
+
+                <h2>
+                    {{ python_count }}
+                </h2>
+
+                <p>
+                    Python Questions
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🛢️
+            </div>
+
+            <div>
+
+                <h2>
+                    {{ sql_count }}
+                </h2>
+
+                <p>
+                    SQL Questions
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ⚡
+            </div>
+
+            <div>
+
+                <h2>
+                    {{ django_count }}
+                </h2>
+
+                <p>
+                    Django Questions
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🌐
+            </div>
+
+            <div>
+
+                <h2>
+                    {{ web_count }}
+                </h2>
+
+                <p>
+                    Web Development
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- QUESTIONS -->
+
+    <section class="question-grid">
+
+        {% for question in questions %}
+
+        <div class="question-card">
+
+            <div class="question-top">
+
+                <span class="category">
+                    {{ question.category }}
+                </span>
+
+                <a
+                  href="/bookmark/{{ question.id }}/"
+                  class="bookmark"
+
+                >
+                {% if question.id in bookmarks %}
+
+                ⭐
+
+                {% else %}
+
+                ☆
+
+                 {% endif %}
+                </a>
+
+            </div>
+
+            <a href="/question/{{ question.id }}/">
+
+                <h3>
+                    {{ question.title }}
+
+                </h3>
+
+            </a>
+
+            <div class="question-actions">
+
+                <span class="difficulty">
+                    Easy
+                </span>
+
+                <button
+                    type="button"
+                    class="answer-btn"
+                    onclick="toggleAnswer('answer{{ question.id }}')"
+                >
+                    View Answer
+                </button>
+
+            </div>
+
+            <div
+                class="answer-box"
+                id="answer{{ question.id }}"
+            >
+                {{ question.answer }}
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="empty-box">
+
+            <h2>
+                No Questions Found 😔
+            </h2>
+
+        </div>
+
+        {% endfor %}
+
+    </section>
+
+    <!-- PAGINATION -->
+
+    <div class="pagination">
+
+        {% if questions.has_previous %}
+
+            <a href="?page={{ questions.previous_page_number }}">
+                Previous
+            </a>
+
+        {% endif %}
+
+        <span>
+            Page {{ questions.number }} of {{ questions.paginator.num_pages }}
+        </span>
+
+        {% if questions.has_next %}
+
+            <a href="?page={{ questions.next_page_number }}">
+                Next
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<script>
+
+function toggleAnswer(id){
+
+    const answer = document.getElementById(id);
+
+    answer.classList.toggle("show");
+
+}
+
+</script>
+
+{% endblock %}
