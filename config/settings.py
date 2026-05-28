@@ -4,9 +4,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-*t4=0b+(s18gs_^3c*05%5i$ru222y7r#h-8!!sky(ot2=y@$j'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'interviewhub-1-wlys.onrender.com'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
