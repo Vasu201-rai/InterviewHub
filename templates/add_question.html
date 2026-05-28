@@ -11,7 +11,7 @@
         </h1>
 
         <p>
-            Create new interview questions for users.
+            Add important interview questions for platform users.
         </p>
 
     </div>
@@ -19,26 +19,12 @@
     <div class="auth-card">
 
         <h2>
-            Add Question
+            New Question
         </h2>
 
         <form method="POST">
 
             {% csrf_token %}
-
-            <input
-                type="text"
-                name="title"
-                placeholder="Enter Question Title"
-                required
-            >
-
-            <textarea
-                name="answer"
-                placeholder="Enter Answer"
-                rows="6"
-                required
-            ></textarea>
 
             <select name="category" required>
 
@@ -63,6 +49,20 @@
                 </option>
 
             </select>
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Enter Question Title"
+                required
+            >
+
+            <textarea
+                name="answer"
+                rows="8"
+                placeholder="Enter Answer"
+                required
+            ></textarea>
 
             <button type="submit">
                 Add Question

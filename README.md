@@ -1,60 +1,80 @@
 # 🚀 InterviewHub
 
-A Full Stack Django-based Interview Preparation Platform.
+InterviewHub is a full-stack Django-based interview preparation platform where users can practice technical interview questions with a modern and responsive UI.
 
 ---
 
-## 📌 Features
+# ✨ Features
 
-- User Authentication (Login / Signup)
-- Secure Login System
-- Dashboard with Interview Questions
-- Search & Filter Questions
-- Category-wise Questions (Python, SQL, Django, Web)
-- Pagination Support
-- Show/Hide Answer Feature
-- Analytics Dashboard (Stats)
-- Clean Modern UI (SaaS Style)
-
----
-
-## 🛠 Tech Stack
-
-- Python
-- Django
-- HTML
-- CSS
-- JavaScript
-- SQLite / MySQL
+* 🔐 User Authentication (Signup/Login/Logout)
+* 📚 Interview Questions Dashboard
+* 🔍 Search Functionality
+* 🏷️ Category Filtering
+* ⭐ Bookmark Questions
+* 📄 Pagination System
+* 📱 Fully Responsive Modern UI
+* 🛠️ Admin Question Management
+* 🌐 Deployed on Render
+* 💻 Source Code on GitHub
 
 ---
 
-## 📊 Project Flow
+# 🧑‍💻 Tech Stack
 
-Home → Login → Dashboard → Questions Practice
+* Python
+* Django
+* HTML
+* CSS
+* JavaScript
+* MySQL
+* SQLite
+* Git & GitHub
+* Render
 
 ---
 
-## 🔥 Screenshots
+# 📸 Screenshots
 
-(Add screenshots here later)
+## Home Page
+
+Modern landing page for interview preparation.
+
+## Dashboard
+
+Users can browse and search interview questions.
+
+## Authentication
+
+Secure login and signup system.
 
 ---
 
-## 🚀 How to Run
+# ⚙️ Installation
 
 ```bash
+git clone https://github.com/Vasu201-rai/InterviewHub.git
+
+cd InterviewHub
+
+python -m venv venv
+
+venv\Scripts\activate
+
 pip install -r requirements.txt
-python manage.py runserver
 
+python manage.py migrate
+
+python manage.py runserver
+```
 
 ---
 
-# 🎯 STEP 2 — GitHub Upload (NEXT BIG STEP)
+# 🌐 Live Project
 
-Ab tu karega:
+https://interviewhub-1-wlys.onrender.com
 
-```bash
-git init
-git add .
-git commit -m "Initial InterviewHub project"
+---
+
+# 👨‍💻 Author
+
+Vasu Rai
