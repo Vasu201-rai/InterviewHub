@@ -12,6 +12,10 @@ ALLOWED_HOSTS = [
     'interviewhub-1-wlys.onrender.com'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://interviewhub-1-wlys.onrender.com'
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
