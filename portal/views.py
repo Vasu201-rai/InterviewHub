@@ -109,7 +109,7 @@ def dashboard(request):
         user=request.user
     ).values_list('question_id', flat=True)
 
-    questions = Question.objects.all()
+    questions = Question.objects.all().order_by('-id')
 
     if search:
         questions = questions.filter(title__icontains=search)
