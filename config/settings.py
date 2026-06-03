@@ -63,32 +63,33 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #DATABASES = {
 #    'default': {
 #       'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
+#       'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
-#DATABASES = {
-#   'default': {
-#       'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'interviewhub',
-#        'USER': 'root',
-#        'PASSWORD': 'Vasu@123',
-#        'HOST': 'localhost',
-#        'PORT': '3306',
-#    }
-#}
-
-import os
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('interviewhub',),
-        'USER': os.getenv('root'),
-        'PASSWORD': os.getenv('Vasu@123'),
-        'HOST': os.getenv('localhost'),
+   'default': {
+      'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'interviewhub',
+       'USER': 'root',
+        'PASSWORD': 'Vasu@123',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
+
+#import os
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': os.getenv('interviewhub',),
+#        'USER': os.getenv('root'),
+#        'PASSWORD': os.getenv('Vasu@123'),
+#        'HOST': os.getenv('localhost'),
+#        'PORT': '3306',
+#    }
+#}
 
 
 #DATABASES = {
