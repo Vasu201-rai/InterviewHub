@@ -1,19 +1,22 @@
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-*t4=0b+(s18gs_^3c*05%5i$ru222y7r#h-8!!sky(ot2=y@$j'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'interviewhub-1-wlys.onrender.com'
+    'vasuu.pythonanywhere.com'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://interviewhub-1-wlys.onrender.com'
+    'https://vasuu.pythonanywhere.com'
 ]
 
 INSTALLED_APPS = [
@@ -63,11 +66,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
-
 #DATABASES = {
 #   'default': {
 #       'ENGINE': 'django.db.backends.mysql',
-#       'NAME': 'interviewhub',
+#        'NAME': 'interviewhub',
 #        'USER': 'root',
 #        'PASSWORD': 'Vasu@123',
 #        'HOST': 'localhost',
@@ -75,16 +77,34 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #    }
 #}
 
-import dj_database_url
 import os
 
 DATABASES = {
-    'default': dj_database_url.parse(
-        os.environ.get("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('interviewhub',),
+        'USER': os.getenv('root'),
+        'PASSWORD': os.getenv('Vasu@123'),
+        'HOST': os.getenv('localhost'),
+        'PORT': '3306',
+    }
 }
+
+
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default=os.getenv("DATABASE_URL"),
+#        conn_max_age=600,
+#        ssl_require=False
+#    )
+#}
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -103,3 +123,5 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 LOGIN_URL = '/login/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' 
