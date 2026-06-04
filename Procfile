@@ -1,1 +1,1 @@
-web: gunicorn InterviewHub.wsgi
+web: gunicorn config.wsgi:application
