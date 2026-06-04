@@ -1,3 +1,5 @@
-import pymysql
+import os
 
-pymysql.install_as_MySQLdb()
+if not os.environ.get('RENDER'):
+    import pymysql
+    pymysql.install_as_MySQLdb()
