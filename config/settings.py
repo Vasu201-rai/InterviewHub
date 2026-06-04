@@ -123,6 +123,7 @@ LOGIN_URL = '/login/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Render ke liye session fix
-SESSION_COOKIE_SECURE = True
+
+SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
