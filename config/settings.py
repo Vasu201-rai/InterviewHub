@@ -15,12 +15,12 @@ DEBUG = False
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "interviewhub-u9pa.onrender.com",
+    "interviewhub-qnxf.onrender.com",
 ]
 
 # ✅ CSRF fix (must include https + domain)
 CSRF_TRUSTED_ORIGINS = [
-    "https://interviewhub-u9pa.onrender.com",  #
+    "https://interviewhub-qnxf.onrender.com",
 ]
 
 
