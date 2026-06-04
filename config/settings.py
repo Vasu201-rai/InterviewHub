@@ -6,7 +6,7 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-*t4=0b+(s18gs_^3c*05%5i$ru222y7r#h-8!!sky(ot2=y@$j'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-*t4=0b+(s18gs_^3c*05%5i$ru222y7r#h-8!!sky(ot2=y@$j')
 
 # ⚠️ Production safe
 DEBUG = False
@@ -20,8 +20,11 @@ ALLOWED_HOSTS = [
 
 # ✅ CSRF fix (must include https + domain)
 CSRF_TRUSTED_ORIGINS = [
-    "https://interviewhub-u9pa.onrender.com",
+    "https://interviewhub-u9pa.onrender.com",  #
 ]
+
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -64,16 +67,35 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # ---------------- DATABASE ----------------
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'interviewhub',
-        'USER': 'root',
-        'PASSWORD': 'Vasu@123',
-        'HOST': 'localhost',
-        'PORT': '3306',
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'interviewhub',
+#        'USER': 'root',
+#        'PASSWORD': 'Vasu@123',
+#        'HOST': 'localhost',
+#        'PORT': '3306',
+#    }
+#}
+# ---------------- DATABASE ----------------
+import dj_database_url
+
+if os.environ.get('RENDER'):
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'interviewhub',
+            'USER': 'root',
+            'PASSWORD': 'Vasu@123',
+            'HOST': 'localhost',
+            'PORT': '3306',
+            
+        }
+    }
 
 # ---------------- PASSWORD VALIDATION ----------------
 AUTH_PASSWORD_VALIDATORS = [
