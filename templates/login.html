@@ -13,6 +13,11 @@
 
         <h2>Login</h2>
 
+        {% for message in messages %}
+        <p style="color:red;">{{ message }}</p>
+        
+        {% endfor %}
+
         <form method="POST">
             {% csrf_token %}
 
