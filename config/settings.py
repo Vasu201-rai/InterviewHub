@@ -1,5 +1,6 @@
 from pathlib import Path
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
@@ -7,16 +8,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-*t4=0b+(s18gs_^3c*05%5i$ru222y7r#h-8!!sky(ot2=y@$j'
 
+# ⚠️ Production safe
 DEBUG = False
 
+# ✅ IMPORTANT FIX (Render needs full domain)
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "interviewhub-u9pa.onrender.com"
+    "interviewhub-u9pa.onrender.com",
 ]
 
+# ✅ CSRF fix (must include https + domain)
 CSRF_TRUSTED_ORIGINS = [
-    'https://interviewhub-u9pa.onrender.com'
+    "https://interviewhub-u9pa.onrender.com",
 ]
 
 INSTALLED_APPS = [
@@ -31,7 +35,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # must be here
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -59,71 +63,39 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
-#DATABASES = {
-#    'default': {
-#       'ENGINE': 'django.db.backends.sqlite3',
-#       'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
+# ---------------- DATABASE ----------------
 DATABASES = {
-   'default': {
-      'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'interviewhub',
-       'USER': 'root',
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'interviewhub',
+        'USER': 'root',
         'PASSWORD': 'Vasu@123',
         'HOST': 'localhost',
         'PORT': '3306',
     }
 }
 
-#import os
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': os.getenv('interviewhub',),
-#        'USER': os.getenv('root'),
-#        'PASSWORD': os.getenv('Vasu@123'),
-#        'HOST': os.getenv('localhost'),
-#        'PORT': '3306',
-#    }
-#}
-
-
-#DATABASES = {
-#    'default': dj_database_url.config(
-#        default=os.getenv("DATABASE_URL"),
-#        conn_max_age=600,
-#        ssl_require=False
-#    )
-#}
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
+# ---------------- PASSWORD VALIDATION ----------------
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
 ]
 
+# ---------------- INTERNATIONALIZATION ----------------
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 USE_TZ = True
 
+# ---------------- STATIC FILES (IMPORTANT FIX) ----------------
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
+# WhiteNoise production fix
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# ---------------- LOGIN ----------------
 LOGIN_URL = '/login/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
