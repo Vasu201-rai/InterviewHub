@@ -10,9 +10,9 @@ SECRET_KEY = 'django-insecure-*t4=0b+(s18gs_^3c*05%5i$ru222y7r#h-8!!sky(ot2=y@$j
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '.onrender.com',
-    '127.0.0.1',
-    'localhost'
+    "127.0.0.1",
+    "localhost",
+    "interviewhub-u9pa.onrender.com"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
