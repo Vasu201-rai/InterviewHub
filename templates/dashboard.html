@@ -223,18 +223,27 @@
             </a>
 
             <div class="question-actions">
-
                 <span class="difficulty">
                     Easy
-                </span>
+                 </span>
 
-                <button
-                    type="button"
-                    class="answer-btn"
-                    onclick="toggleAnswer('answer{{ question.id }}')"
-                >
-                    View Answer
-                </button>
+                 <button
+                 type="button"
+                 class="answer-btn"
+                 onclick="toggleAnswer('answer{{ question.id }}')"
+                 >
+                 View Answer
+                 </button>
+                {% if request.user.is_superuser %}
+                <a href="/edit-question/{{ question.id }}/" class="edit-btn">
+                        ✏️ Edit
+                </a>
+                <a href="/delete-question/{{ question.id }}/"
+                class="delete-btn"
+                onclick="return confirm('Delete karna chahte ho?')">
+                🗑️ Delete
+                </a>
+               {% endif %}
 
             </div>
 

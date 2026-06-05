@@ -136,42 +136,29 @@ def dashboard(request):
        
 @login_required
 def edit_question(request, id):
+    if not request.user.is_superuser:
+        return HttpResponseForbidden("403 Forbidden")
 
-    question = Question.objects.get(
-    id=id,
-    user=request.user
-)
+    question = Question.objects.get(id=id)
 
     if request.method == 'POST':
-
         question.category = request.POST.get('category')
-
         question.title = request.POST.get('title')
-
         question.answer = request.POST.get('answer')
-
         question.save()
-        
-        messages.success(request,'Question updated successfully!')
-
+        messages.success(request, 'Question updated successfully!')
         return redirect('/dashboard/')
 
-    return render(request, 'edit_question.html', {
-        'question': question
-    })
+    return render(request, 'edit_question.html', {'question': question})
     
 @login_required
 def delete_question(request, id):
+    if not request.user.is_superuser:
+        return HttpResponseForbidden("403 Forbidden")
 
-    question = Question.objects.get(
-    id=id,
-    user=request.user
-)
-
+    question = Question.objects.get(id=id)
     question.delete()
-    
-    messages.success(request,'Question deleted successfully!')
-
+    messages.success(request, 'Question deleted successfully!')
     return redirect('/dashboard/')
 
 
