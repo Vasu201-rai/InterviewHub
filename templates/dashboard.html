@@ -64,29 +64,13 @@
             >
 
             <select name="category">
-
-                <option value="">
-                    All Categories
-                </option>
-
-                <option value="Python">
-                    Python
-                </option>
-
-                <option value="SQL">
-                    SQL
-                </option>
-
-                <option value="Django">
-                    Django
-                </option>
-
-                <option value="Web">
-                    Web Development
-                </option>
-
+                <option value="">All Categories</option>
+                <option value="Python" {% if request.GET.category == "Python" %}selected{% endif %}>Python</option>
+                <option value="SQL" {% if request.GET.category == "SQL" %}selected{% endif %}>SQL</option>
+                <option value="Django" {% if request.GET.category == "Django" %}selected{% endif %}>Django</option>
+                <option value="Web" {% if request.GET.category == "Web" %}selected{% endif %}>Web Development</option>
             </select>
-
+    
             <button type="submit">
                 Search
             </button>
@@ -274,27 +258,27 @@
 
     <div class="pagination">
 
-        {% if questions.has_previous %}
+    {% if questions.has_previous %}
 
-            <a href="?page={{ questions.previous_page_number }}">
-                Previous
-            </a>
+        <a href="?page={{ questions.previous_page_number }}&category={{ request.GET.category }}&search={{ request.GET.search }}">
+            Previous
+        </a>
 
-        {% endif %}
+    {% endif %}
 
-        <span>
-            Page {{ questions.number }} of {{ questions.paginator.num_pages }}
-        </span>
+    <span>
+        Page {{ questions.number }} of {{ questions.paginator.num_pages }}
+    </span>
 
-        {% if questions.has_next %}
+    {% if questions.has_next %}
 
-            <a href="?page={{ questions.next_page_number }}">
-                Next
-            </a>
+        <a href="?page={{ questions.next_page_number }}&category={{ request.GET.category }}&search={{ request.GET.search }}">
+            Next
+        </a>
 
-        {% endif %}
+    {% endif %}
 
-    </div>
+</div>
 
 </div>
 
