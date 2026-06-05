@@ -83,7 +83,7 @@ def add_question(request):
             
             title=title,
             answer=answer,
-            category=category
+            category=category,
             user=request.user
         )
 
