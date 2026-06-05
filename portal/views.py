@@ -76,6 +76,7 @@ def add_question(request):
         title = request.POST.get('title')
         answer = request.POST.get('answer')
         category = request.POST.get('category')
+        
 
         # Save Question
         Question.objects.create(
@@ -83,6 +84,7 @@ def add_question(request):
             title=title,
             answer=answer,
             category=category
+            user=request.user
         )
 
         messages.success(request, "Question Added Successfully ✅")
