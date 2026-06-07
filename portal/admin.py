@@ -7,13 +7,19 @@ from django.contrib.auth.models import User
 from .models import Question
 
 class QuestionResource(resources.ModelResource):
+    
+    user = Field(
+        column_name='user',
+        attribute='user',
+        widget=ForeignKeyWidget(User, 'username')
+    )
+    
     class Meta:
         model = Question
-        fields = ('id', 'title', 'answer', 'category')
-        exclude = ('user',)
+        fields = ('id', 'title', 'answer', 'category', 'user')
 
     def before_import_row(self, row, **kwargs):
-        row['user'] = User.objects.filter(is_superuser=True).first().id
+        row['user'] = User.objects.filter(is_superuser=True).first().username
 
 class QuestionAdmin(ImportExportModelAdmin):
     resource_class = QuestionResource
