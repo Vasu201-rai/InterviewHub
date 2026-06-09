@@ -123,6 +123,7 @@ def dashboard(request):
         'sql_count': Question.objects.filter(category="SQL").count(),
         'django_count': Question.objects.filter(category="Django").count(),
         'web_count': Question.objects.filter(category="Web").count(),
+        'react_count': Question.objects.filter(category="React").count(),
         'bookmarks': bookmarks
     })
 

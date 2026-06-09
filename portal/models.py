@@ -13,6 +13,7 @@ class Question(models.Model):
         ('SQL', 'SQL'),
         ('Django', 'Django'),
         ('Web', 'Web Development'),
+         ('React', 'React'),
     ]
 
     category = models.CharField(

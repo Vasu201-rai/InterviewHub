@@ -69,6 +69,7 @@
                 <option value="SQL" {% if request.GET.category == "SQL" %}selected{% endif %}>SQL</option>
                 <option value="Django" {% if request.GET.category == "Django" %}selected{% endif %}>Django</option>
                 <option value="Web" {% if request.GET.category == "Web" %}selected{% endif %}>Web Development</option>
+                <option value="React" {% if request.GET.category == "React" %}selected{% endif %}>React</option>
             </select>
     
             <button type="submit">
@@ -162,6 +163,31 @@
             </div>
 
         </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                ⚛️
+            </div>
+            <div>
+                <h2>
+                    {{ react_count }}
+                 </h2>
+
+                <p>
+                    React Questions
+                </p>
+            </div>
+        </div>
+            
+       
+    
+        
+    
+    
+        
+        
+    
+
 
     </section>
 
