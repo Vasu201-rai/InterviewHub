@@ -124,6 +124,9 @@ def dashboard(request):
         'django_count': Question.objects.filter(category="Django").count(),
         'web_count': Question.objects.filter(category="Web").count(),
         'react_count': Question.objects.filter(category="React").count(),
+        'javascript_count': Question.objects.filter(category="JavaScript").count(),
+        'html_count': Question.objects.filter(category="HTML").count(),
+        'css_count': Question.objects.filter(category="CSS").count(),
         'bookmarks': bookmarks
     })
 

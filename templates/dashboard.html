@@ -70,6 +70,10 @@
                 <option value="Django" {% if request.GET.category == "Django" %}selected{% endif %}>Django</option>
                 <option value="Web" {% if request.GET.category == "Web" %}selected{% endif %}>Web Development</option>
                 <option value="React" {% if request.GET.category == "React" %}selected{% endif %}>React</option>
+                <option value="React" {% if request.GET.category == "React" %}selected{% endif %}>React</option>
+                <option value="JavaScript" {% if request.GET.category == "JavaScript" %}selected{% endif %}>JavaScript</option>
+                <option value="HTML" {% if request.GET.category == "HTML" %}selected{% endif %}>HTML</option>
+                <option value="CSS" {% if request.GET.category == "CSS" %}selected{% endif %}>CSS</option>
             </select>
     
             <button type="submit">
@@ -86,109 +90,54 @@
 
         <div class="stat-card">
 
-            <div class="stat-icon">
-                🐍
-            </div>
-
-            <div>
-
-                <h2>
-                    {{ python_count }}
-                </h2>
-
-                <p>
-                    Python Questions
-                </p>
-
-            </div>
+            <div class="stat-icon">🐍</div>
+            <div><h2>{{ python_count }}</h2><p>Python Questions</p></div>
 
         </div>
 
         <div class="stat-card">
 
-            <div class="stat-icon">
-                🛢️
-            </div>
-
-            <div>
-
-                <h2>
-                    {{ sql_count }}
-                </h2>
-
-                <p>
-                    SQL Questions
-                </p>
-
-            </div>
+            <div class="stat-icon">🛢️</div>
+            <div><h2>{{ sql_count }}</h2><p>SQL Questions</p></div>
 
         </div>
 
         <div class="stat-card">
 
-            <div class="stat-icon">
-                ⚡
-            </div>
-
-            <div>
-
-                <h2>
-                    {{ django_count }}
-                </h2>
-
-                <p>
-                    Django Questions
-                </p>
-
-            </div>
+            <div class="stat-icon">⚡</div>
+            <div><h2>{{ django_count }} </h2><p> Django Questions</p></div>
 
         </div>
 
         <div class="stat-card">
 
-            <div class="stat-icon">
-                🌐
-            </div>
-
-            <div>
-
-                <h2>
-                    {{ web_count }}
-                </h2>
-
-                <p>
-                    Web Development
-                </p>
-
-            </div>
+            <div class="stat-icon">🌐</div>
+            <div><h2>{{ web_count }}</h2><p>Web Development</p></div>
 
         </div>
 
         <div class="stat-card">
-            <div class="stat-icon">
-                ⚛️
-            </div>
-            <div>
-                <h2>
-                    {{ react_count }}
-                 </h2>
-
-                <p>
-                    React Questions
-                </p>
-            </div>
+            <div class="stat-icon">⚛️</div>
+            <div><h2>  {{ react_count }}</h2><p>React Questions</p></div>
         </div>
-            
+
+        <div class="stat-card">
+            <div class="stat-icon">🟨</div>
+            <div><h2>{{ javascript_count }}</h2><p>JavaScript Questions</p></div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🌐</div>
+            <div><h2>{{ html_count }}</h2><p>HTML Questions</p></div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🎨</div>
+           <div><h2>{{ css_count }}</h2><p>CSS Questions</p></div>
+    
+        </div>
+
        
-    
-        
-    
-    
-        
-        
-    
-
-
     </section>
 
     <!-- QUESTIONS -->
