@@ -4,269 +4,145 @@
 
 <div class="dashboard">
 
-    <!-- HERO SECTION -->
-
+    <!-- HERO -->
     <section class="hero">
-
         <div class="hero-content">
-
-            <span class="hero-badge">
-                🚀 Smart Interview Preparation Platform
-            </span>
-
-            <h1>
-                Master Your Technical Interviews
-            </h1>
-
-            <p>
-                Practice interview questions, save answers, and become job ready with a modern coding preparation platform.
-            </p>
-
+            <span class="hero-badge">🚀 Smart Interview Preparation Platform</span>
+            <h1>Master Your <span>Technical</span> Interviews</h1>
+            <p>Practice interview questions, save answers, and become job ready with a modern coding preparation platform.</p>
             <div class="hero-buttons">
-
-                <button type="button" class="primary-btn">
-                    Start Practice
-                </button>
-
-                <button type="button" class="secondary-btn">
-                    Explore Questions
-                </button>
-
+                <a href="#questions" class="primary-btn">Start Practice</a>
+                <a href="#stats" class="secondary-btn">Explore Questions</a>
             </div>
-
         </div>
-
         <div class="hero-card">
-
-            <h2>
-                {{ total }}
-            </h2>
-
-            <p>
-                Total Questions
-            </p>
-
+            <h2>{{ total }}</h2>
+            <p>Total Questions</p>
         </div>
-
-    </section>
-
-    <!-- SEARCH -->
-
-    <section class="search-section">
-
-        <form method="GET" class="search-form">
-
-            <input
-                type="text"
-                name="search"
-                placeholder="Search interview questions..."
-                value="{{ request.GET.search }}"
-            >
-
-            <select name="category">
-                <option value="">All Categories</option>
-                <option value="Python" {% if request.GET.category == "Python" %}selected{% endif %}>Python</option>
-                <option value="SQL" {% if request.GET.category == "SQL" %}selected{% endif %}>SQL</option>
-                <option value="Django" {% if request.GET.category == "Django" %}selected{% endif %}>Django</option>
-                <option value="Web" {% if request.GET.category == "Web" %}selected{% endif %}>Web Development</option>
-                <option value="React" {% if request.GET.category == "React" %}selected{% endif %}>React</option>
-                <option value="React" {% if request.GET.category == "React" %}selected{% endif %}>React</option>
-                <option value="JavaScript" {% if request.GET.category == "JavaScript" %}selected{% endif %}>JavaScript</option>
-                <option value="HTML" {% if request.GET.category == "HTML" %}selected{% endif %}>HTML</option>
-                <option value="CSS" {% if request.GET.category == "CSS" %}selected{% endif %}>CSS</option>
-            </select>
-    
-            <button type="submit">
-                Search
-            </button>
-
-        </form>
-
     </section>
 
     <!-- STATS -->
-
-    <section class="stats-grid">
-
-        <div class="stat-card">
-
+    <section class="stats-grid" id="stats">
+        <div class="stat-card stat-python">
             <div class="stat-icon">🐍</div>
-            <div><h2>{{ python_count }}</h2><p>Python Questions</p></div>
-
+            <div><h2>{{ python_count }}</h2><p>Python</p></div>
         </div>
-
-        <div class="stat-card">
-
+        <div class="stat-card stat-sql">
             <div class="stat-icon">🛢️</div>
-            <div><h2>{{ sql_count }}</h2><p>SQL Questions</p></div>
-
+            <div><h2>{{ sql_count }}</h2><p>SQL</p></div>
         </div>
-
-        <div class="stat-card">
-
+        <div class="stat-card stat-django">
             <div class="stat-icon">⚡</div>
-            <div><h2>{{ django_count }} </h2><p> Django Questions</p></div>
-
+            <div><h2>{{ django_count }}</h2><p>Django</p></div>
         </div>
-
-        <div class="stat-card">
-
+        <div class="stat-card stat-web">
             <div class="stat-icon">🌐</div>
-            <div><h2>{{ web_count }}</h2><p>Web Development</p></div>
-
+            <div><h2>{{ web_count }}</h2><p>Web Dev</p></div>
         </div>
-
-        <div class="stat-card">
+        <div class="stat-card stat-react">
             <div class="stat-icon">⚛️</div>
-            <div><h2>  {{ react_count }}</h2><p>React Questions</p></div>
+            <div><h2>{{ react_count }}</h2><p>React</p></div>
         </div>
-
-        <div class="stat-card">
+        <div class="stat-card stat-js">
             <div class="stat-icon">🟨</div>
-            <div><h2>{{ javascript_count }}</h2><p>JavaScript Questions</p></div>
+            <div><h2>{{ javascript_count }}</h2><p>JavaScript</p></div>
         </div>
-
-        <div class="stat-card">
-            <div class="stat-icon">🌐</div>
-            <div><h2>{{ html_count }}</h2><p>HTML Questions</p></div>
+        <div class="stat-card stat-html">
+            <div class="stat-icon">📄</div>
+            <div><h2>{{ html_count }}</h2><p>HTML</p></div>
         </div>
-
-        <div class="stat-card">
+        <div class="stat-card stat-css">
             <div class="stat-icon">🎨</div>
-           <div><h2>{{ css_count }}</h2><p>CSS Questions</p></div>
-    
+            <div><h2>{{ css_count }}</h2><p>CSS</p></div>
         </div>
+    </section>
 
-       
+    <!-- SEARCH + CATEGORY FILTER -->
+    <section class="search-section">
+        <form method="GET" class="search-form">
+            <input
+                type="text"
+                name="search"
+                placeholder="🔍  Search interview questions..."
+                value="{{ request.GET.search }}"
+            >
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="category-pills">
+            <a href="?" class="pill {% if not request.GET.category %}pill-active{% endif %}">All</a>
+            <a href="?category=Python" class="pill {% if request.GET.category == 'Python' %}pill-active{% endif %}">🐍 Python</a>
+            <a href="?category=SQL" class="pill {% if request.GET.category == 'SQL' %}pill-active{% endif %}">🛢️ SQL</a>
+            <a href="?category=Django" class="pill {% if request.GET.category == 'Django' %}pill-active{% endif %}">⚡ Django</a>
+            <a href="?category=Web" class="pill {% if request.GET.category == 'Web' %}pill-active{% endif %}">🌐 Web Dev</a>
+            <a href="?category=React" class="pill {% if request.GET.category == 'React' %}pill-active{% endif %}">⚛️ React</a>
+            <a href="?category=JavaScript" class="pill {% if request.GET.category == 'JavaScript' %}pill-active{% endif %}">🟨 JavaScript</a>
+            <a href="?category=HTML" class="pill {% if request.GET.category == 'HTML' %}pill-active{% endif %}">📄 HTML</a>
+            <a href="?category=CSS" class="pill {% if request.GET.category == 'CSS' %}pill-active{% endif %}">🎨 CSS</a>
+        </div>
     </section>
 
     <!-- QUESTIONS -->
-
-    <section class="question-grid">
+    <section class="question-grid" id="questions">
 
         {% for question in questions %}
-
         <div class="question-card">
-
             <div class="question-top">
-
-                <span class="category">
-                    {{ question.category }}
-                </span>
-
-                <a
-                  href="/bookmark/{{ question.id }}/"
-                  class="bookmark"
-
-                >
-                {% if question.id in bookmarks %}
-
-                ⭐
-
-                {% else %}
-
-                ☆
-
-                 {% endif %}
+                <span class="category">{{ question.category }}</span>
+                <a href="/bookmark/{{ question.id }}/" class="bookmark">
+                    {% if question.id in bookmarks %}⭐{% else %}☆{% endif %}
                 </a>
-
             </div>
-
             <a href="/question/{{ question.id }}/">
-
-                <h3>
-                    {{ question.title }}
-
-                </h3>
-
+                <h3>{{ question.title }}</h3>
             </a>
-
             <div class="question-actions">
-                <span class="difficulty">
-                    Easy
-                 </span>
-
-                 <button
-                 type="button"
-                 class="answer-btn"
-                 onclick="toggleAnswer('answer{{ question.id }}')"
-                 >
-                 View Answer
-                 </button>
+                <span class="difficulty">Easy</span>
+                <button type="button" class="answer-btn" onclick="toggleAnswer('answer{{ question.id }}')">
+                    View Answer
+                </button>
                 {% if request.user.is_superuser %}
-                <a href="/edit-question/{{ question.id }}/" class="edit-btn">
-                        ✏️ Edit
-                </a>
-                <a href="/delete-question/{{ question.id }}/"
-                class="delete-btn"
-                onclick="return confirm('Delete karna chahte ho?')">
-                🗑️ Delete
-                </a>
-               {% endif %}
-
+                <a href="/edit-question/{{ question.id }}/" class="edit-btn">✏️ Edit</a>
+                <a href="/delete-question/{{ question.id }}/" class="delete-btn" onclick="return confirm('Delete karna chahte ho?')">🗑️ Delete</a>
+                {% endif %}
             </div>
-
-            <div
-                class="answer-box"
-                id="answer{{ question.id }}"
-            >
+            <div class="answer-box" id="answer{{ question.id }}">
                 {{ question.answer }}
             </div>
-
         </div>
-
         {% empty %}
-
         <div class="empty-box">
-
-            <h2>
-                No Questions Found 😔
-            </h2>
-
+            <h2>No Questions Found 😔</h2>
+            <p>Try a different search or category</p>
         </div>
-
         {% endfor %}
 
     </section>
 
     <!-- PAGINATION -->
-
     <div class="pagination">
-
-    {% if questions.has_previous %}
-
-        <a href="?page={{ questions.previous_page_number }}&category={{ request.GET.category }}&search={{ request.GET.search }}">
-            Previous
-        </a>
-
-    {% endif %}
-
-    <span>
-        Page {{ questions.number }} of {{ questions.paginator.num_pages }}
-    </span>
-
-    {% if questions.has_next %}
-
-        <a href="?page={{ questions.next_page_number }}&category={{ request.GET.category }}&search={{ request.GET.search }}">
-            Next
-        </a>
-
-    {% endif %}
-
-</div>
+        {% if questions.has_previous %}
+        <a href="?page={{ questions.previous_page_number }}&category={{ request.GET.category }}&search={{ request.GET.search }}">← Previous</a>
+        {% endif %}
+        <span>Page {{ questions.number }} of {{ questions.paginator.num_pages }}</span>
+        {% if questions.has_next %}
+        <a href="?page={{ questions.next_page_number }}&category={{ request.GET.category }}&search={{ request.GET.search }}">Next →</a>
+        {% endif %}
+    </div>
 
 </div>
 
 <script>
-
-function toggleAnswer(id){
-
+function toggleAnswer(id) {
     const answer = document.getElementById(id);
-
     answer.classList.toggle("show");
-
+    const btn = answer.previousElementSibling.querySelector('.answer-btn');
+    if (answer.classList.contains('show')) {
+        btn.textContent = 'Hide Answer';
+    } else {
+        btn.textContent = 'View Answer';
+    }
 }
-
 </script>
 
 {% endblock %}

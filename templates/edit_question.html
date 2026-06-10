@@ -2,53 +2,40 @@
 
 {% block content %}
 
-<div class="card">
+<div class="auth-wrapper">
 
-    <h2>Edit Question</h2>
+    <div class="auth-left">
+        <h1>Edit Question ✏️</h1>
+        <p>Update the interview question details below.</p>
+    </div>
 
-    <form method="POST">
+    <div class="auth-card">
 
-        {% csrf_token %}
+        <h2>Update Question</h2>
 
-        <label>Category</label>
+        <form method="POST">
+            {% csrf_token %}
 
-        <br><br>
+            <select name="category" required>
+                <option value="Python" {% if question.category == "Python" %}selected{% endif %}>Python</option>
+                <option value="SQL" {% if question.category == "SQL" %}selected{% endif %}>SQL</option>
+                <option value="Django" {% if question.category == "Django" %}selected{% endif %}>Django</option>
+                <option value="Web" {% if question.category == "Web" %}selected{% endif %}>Web Development</option>
+                <option value="React" {% if question.category == "React" %}selected{% endif %}>React</option>
+                <option value="JavaScript" {% if question.category == "JavaScript" %}selected{% endif %}>JavaScript</option>
+                <option value="HTML" {% if question.category == "HTML" %}selected{% endif %}>HTML</option>
+                <option value="CSS" {% if question.category == "CSS" %}selected{% endif %}>CSS</option>
+            </select>
 
-        <select name="category">
+            <input type="text" name="title" value="{{ question.title }}" placeholder="Question Title" required>
 
-            <option value="Python">Python</option>
+            <textarea name="answer" rows="8" placeholder="Answer" required>{{ question.answer }}</textarea>
 
-            <option value="SQL">SQL</option>
+            <button type="submit">Update Question</button>
 
-            <option value="Django">Django</option>
+        </form>
 
-            <option value="Web">Web Development</option>
-
-        </select>
-
-        <br><br>
-
-        <input
-            type="text"
-            name="title"
-            value="{{ question.title }}"
-        >
-
-        <br><br>
-
-        <textarea
-            name="answer"
-            rows="5"
-            cols="50"
-        >{{ question.answer }}</textarea>
-
-        <br><br>
-
-        <button type="submit">
-            Update Question
-        </button>
-
-    </form>
+    </div>
 
 </div>
 
