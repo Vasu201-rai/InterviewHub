@@ -80,7 +80,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # ---------------- DATABASE ----------------
 import dj_database_url
 
-if os.environ.get('RENDER'):
+# ✅ FIXED: ab yeh RENDER env variable ke bajaye seedha DATABASE_URL check karta hai.
+# Isse local machine se bhi (jab .env mein Neon/Postgres DATABASE_URL diya ho)
+# wahi live database use hoga — createsuperuser, migrate, etc. sab isi DB pe chalenge.
+if os.environ.get('DATABASE_URL'):
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
