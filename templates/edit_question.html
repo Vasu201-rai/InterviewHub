@@ -25,6 +25,9 @@
                 <option value="JavaScript" {% if question.category == "JavaScript" %}selected{% endif %}>JavaScript</option>
                 <option value="HTML" {% if question.category == "HTML" %}selected{% endif %}>HTML</option>
                 <option value="CSS" {% if question.category == "CSS" %}selected{% endif %}>CSS</option>
+                <option value="DSA" {% if question.category == "DSA" %}selected{% endif %}>DSA</option>
+                <option value="Backend" {% if question.category == "Backend" %}selected{% endif %}>Backend</option>
+                <option value="HR" {% if question.category == "HR" %}selected{% endif %}>HR</option>
             </select>
 
             <input type="text" name="title" value="{{ question.title }}" placeholder="Question Title" required>

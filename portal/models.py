@@ -17,6 +17,9 @@ class Question(models.Model):
         ('JavaScript', 'JavaScript'),
         ('HTML', 'HTML'),
         ('CSS', 'CSS'),
+        ('DSA', 'DSA'),
+        ('Backend', 'Backend'),
+        ('HR', 'HR'),
     ]
 
     category = models.CharField(

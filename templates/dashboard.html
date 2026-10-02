@@ -55,6 +55,18 @@
             <div class="stat-icon">🎨</div>
             <div><h2>{{ css_count }}</h2><p>CSS</p></div>
         </div>
+        <div class="stat-card stat-dsa">
+            <div class="stat-icon">🧩</div>
+            <div><h2>{{ dsa_count }}</h2><p>DSA</p></div>
+        </div>
+        <div class="stat-card stat-backend">
+            <div class="stat-icon">🛠️</div>
+            <div><h2>{{ backend_count }}</h2><p>Backend</p></div>
+        </div>
+        <div class="stat-card stat-hr">
+            <div class="stat-icon">🧑‍💼</div>
+            <div><h2>{{ hr_count }}</h2><p>HR</p></div>
+        </div>
     </section>
 
     <!-- SEARCH + CATEGORY FILTER -->
@@ -79,6 +91,9 @@
             <a href="?category=JavaScript" class="pill {% if request.GET.category == 'JavaScript' %}pill-active{% endif %}">🟨 JavaScript</a>
             <a href="?category=HTML" class="pill {% if request.GET.category == 'HTML' %}pill-active{% endif %}">📄 HTML</a>
             <a href="?category=CSS" class="pill {% if request.GET.category == 'CSS' %}pill-active{% endif %}">🎨 CSS</a>
+            <a href="?category=DSA" class="pill {% if request.GET.category == 'DSA' %}pill-active{% endif %}">🧩 DSA</a>
+            <a href="?category=Backend" class="pill {% if request.GET.category == 'Backend' %}pill-active{% endif %}">🛠️ Backend</a>
+            <a href="?category=HR" class="pill {% if request.GET.category == 'HR' %}pill-active{% endif %}">🧑‍💼 HR</a>
         </div>
     </section>
 

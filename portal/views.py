@@ -127,6 +127,9 @@ def dashboard(request):
         'javascript_count': Question.objects.filter(category="JavaScript").count(),
         'html_count': Question.objects.filter(category="HTML").count(),
         'css_count': Question.objects.filter(category="CSS").count(),
+        'dsa_count': Question.objects.filter(category="DSA").count(),
+        'backend_count': Question.objects.filter(category="Backend").count(),
+        'hr_count': Question.objects.filter(category="HR").count(),
         'bookmarks': bookmarks
     })
 
