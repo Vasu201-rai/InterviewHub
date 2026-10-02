@@ -250,7 +250,29 @@ def question_detail(request, id):
         user=request.user
     ).values_list('question_id', flat=True)
 
+    category = request.GET.get('category')
+
+    if category:
+        qs = Question.objects.filter(category=category).order_by('-id')
+    else:
+        qs = Question.objects.all().order_by('-id')
+
+    ids = list(qs.values_list('id', flat=True))
+
+    next_id = None
+    prev_id = None
+
+    if question.id in ids:
+        index = ids.index(question.id)
+        if index + 1 < len(ids):
+            next_id = ids[index + 1]
+        if index - 1 >= 0:
+            prev_id = ids[index - 1]
+
     return render(request, 'question_detail.html', {
         'question': question,
-        'bookmarks': bookmarks
+        'bookmarks': bookmarks,
+        'next_id': next_id,
+        'prev_id': prev_id,
+        'category_param': category,
     })

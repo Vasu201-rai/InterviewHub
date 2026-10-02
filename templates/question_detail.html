@@ -149,6 +149,35 @@
         display: none;
     }
 
+    .qd-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        gap: 12px;
+    }
+
+    .qd-nav-btn {
+        flex: 1;
+        text-align: center;
+        padding: 14px;
+        border-radius: 10px;
+        background: #1e293b;
+        color: #e2e8f0;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        border: 1px solid #334155;
+    }
+
+    .qd-nav-btn:hover {
+        background: #334155;
+    }
+
+    .qd-nav-btn.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
     @media (max-width: 600px) {
         .qd-card {
             padding: 20px;
@@ -190,6 +219,20 @@
             {% if request.user.is_superuser %}
             <a href="/edit-question/{{ question.id }}/" class="qd-btn qd-btn-edit">✏️ Edit</a>
             <a href="/delete-question/{{ question.id }}/" class="qd-btn qd-btn-delete" onclick="return confirm('Delete karna chahte ho?')">🗑️ Delete</a>
+            {% endif %}
+        </div>
+
+        <div class="qd-nav">
+            {% if prev_id %}
+            <a href="/question/{{ prev_id }}/?category={{ category_param }}&from={{ request.GET.from }}" class="qd-nav-btn">← Previous</a>
+            {% else %}
+            <span class="qd-nav-btn disabled">← Previous</span>
+            {% endif %}
+
+            {% if next_id %}
+            <a href="/question/{{ next_id }}/?category={{ category_param }}&from={{ request.GET.from }}" class="qd-nav-btn">Next →</a>
+            {% else %}
+            <span class="qd-nav-btn disabled">Next →</span>
             {% endif %}
         </div>
 
