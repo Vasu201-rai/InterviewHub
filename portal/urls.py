@@ -24,5 +24,7 @@ urlpatterns = [
     path('bookmarks/',views.bookmarked_questions,name='bookmarks'),
     
     path('question/<int:id>/',views.question_detail,name='question_detail'),
+
+    path('category/<str:category_name>/', views.category_view, name='category_view'),
     
 ]

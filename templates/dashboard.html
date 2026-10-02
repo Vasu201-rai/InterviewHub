@@ -21,52 +21,52 @@
         </div>
     </section>
 
-    <!-- STATS -->
+    <!-- STATS (click to open dedicated category page) -->
     <section class="stats-grid" id="stats">
-        <div class="stat-card stat-python">
+        <a href="/category/Python/" class="stat-card stat-python">
             <div class="stat-icon">🐍</div>
             <div><h2>{{ python_count }}</h2><p>Python</p></div>
-        </div>
-        <div class="stat-card stat-sql">
+        </a>
+        <a href="/category/SQL/" class="stat-card stat-sql">
             <div class="stat-icon">🛢️</div>
             <div><h2>{{ sql_count }}</h2><p>SQL</p></div>
-        </div>
-        <div class="stat-card stat-django">
+        </a>
+        <a href="/category/Django/" class="stat-card stat-django">
             <div class="stat-icon">⚡</div>
             <div><h2>{{ django_count }}</h2><p>Django</p></div>
-        </div>
-        <div class="stat-card stat-web">
+        </a>
+        <a href="/category/Web/" class="stat-card stat-web">
             <div class="stat-icon">🌐</div>
             <div><h2>{{ web_count }}</h2><p>Web Dev</p></div>
-        </div>
-        <div class="stat-card stat-react">
+        </a>
+        <a href="/category/React/" class="stat-card stat-react">
             <div class="stat-icon">⚛️</div>
             <div><h2>{{ react_count }}</h2><p>React</p></div>
-        </div>
-        <div class="stat-card stat-js">
+        </a>
+        <a href="/category/JavaScript/" class="stat-card stat-js">
             <div class="stat-icon">🟨</div>
             <div><h2>{{ javascript_count }}</h2><p>JavaScript</p></div>
-        </div>
-        <div class="stat-card stat-html">
+        </a>
+        <a href="/category/HTML/" class="stat-card stat-html">
             <div class="stat-icon">📄</div>
             <div><h2>{{ html_count }}</h2><p>HTML</p></div>
-        </div>
-        <div class="stat-card stat-css">
+        </a>
+        <a href="/category/CSS/" class="stat-card stat-css">
             <div class="stat-icon">🎨</div>
             <div><h2>{{ css_count }}</h2><p>CSS</p></div>
-        </div>
-        <div class="stat-card stat-dsa">
+        </a>
+        <a href="/category/DSA/" class="stat-card stat-dsa">
             <div class="stat-icon">🧩</div>
             <div><h2>{{ dsa_count }}</h2><p>DSA</p></div>
-        </div>
-        <div class="stat-card stat-backend">
+        </a>
+        <a href="/category/Backend/" class="stat-card stat-backend">
             <div class="stat-icon">🛠️</div>
             <div><h2>{{ backend_count }}</h2><p>Backend</p></div>
-        </div>
-        <div class="stat-card stat-hr">
+        </a>
+        <a href="/category/HR/" class="stat-card stat-hr">
             <div class="stat-icon">🧑‍💼</div>
             <div><h2>{{ hr_count }}</h2><p>HR</p></div>
-        </div>
+        </a>
     </section>
 
     <!-- SEARCH + CATEGORY FILTER -->
@@ -83,17 +83,17 @@
 
         <div class="category-pills">
             <a href="?" class="pill {% if not request.GET.category %}pill-active{% endif %}">All</a>
-            <a href="?category=Python" class="pill {% if request.GET.category == 'Python' %}pill-active{% endif %}">🐍 Python</a>
-            <a href="?category=SQL" class="pill {% if request.GET.category == 'SQL' %}pill-active{% endif %}">🛢️ SQL</a>
-            <a href="?category=Django" class="pill {% if request.GET.category == 'Django' %}pill-active{% endif %}">⚡ Django</a>
-            <a href="?category=Web" class="pill {% if request.GET.category == 'Web' %}pill-active{% endif %}">🌐 Web Dev</a>
-            <a href="?category=React" class="pill {% if request.GET.category == 'React' %}pill-active{% endif %}">⚛️ React</a>
-            <a href="?category=JavaScript" class="pill {% if request.GET.category == 'JavaScript' %}pill-active{% endif %}">🟨 JavaScript</a>
-            <a href="?category=HTML" class="pill {% if request.GET.category == 'HTML' %}pill-active{% endif %}">📄 HTML</a>
-            <a href="?category=CSS" class="pill {% if request.GET.category == 'CSS' %}pill-active{% endif %}">🎨 CSS</a>
-            <a href="?category=DSA" class="pill {% if request.GET.category == 'DSA' %}pill-active{% endif %}">🧩 DSA</a>
-            <a href="?category=Backend" class="pill {% if request.GET.category == 'Backend' %}pill-active{% endif %}">🛠️ Backend</a>
-            <a href="?category=HR" class="pill {% if request.GET.category == 'HR' %}pill-active{% endif %}">🧑‍💼 HR</a>
+            <a href="/category/Python/" class="pill">🐍 Python</a>
+            <a href="/category/SQL/" class="pill">🛢️ SQL</a>
+            <a href="/category/Django/" class="pill">⚡ Django</a>
+            <a href="/category/Web/" class="pill">🌐 Web Dev</a>
+            <a href="/category/React/" class="pill">⚛️ React</a>
+            <a href="/category/JavaScript/" class="pill">🟨 JavaScript</a>
+            <a href="/category/HTML/" class="pill">📄 HTML</a>
+            <a href="/category/CSS/" class="pill">🎨 CSS</a>
+            <a href="/category/DSA/" class="pill">🧩 DSA</a>
+            <a href="/category/Backend/" class="pill">🛠️ Backend</a>
+            <a href="/category/HR/" class="pill">🧑‍💼 HR</a>
         </div>
     </section>
 

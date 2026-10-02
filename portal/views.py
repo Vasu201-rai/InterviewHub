@@ -133,6 +133,51 @@ def dashboard(request):
         'bookmarks': bookmarks
     })
 
+
+CATEGORY_DISPLAY_NAMES = {
+    'Python': ('🐍', 'Python'),
+    'SQL': ('🛢️', 'SQL'),
+    'Django': ('⚡', 'Django'),
+    'Web': ('🌐', 'Web Development'),
+    'React': ('⚛️', 'React'),
+    'JavaScript': ('🟨', 'JavaScript'),
+    'HTML': ('📄', 'HTML'),
+    'CSS': ('🎨', 'CSS'),
+    'DSA': ('🧩', 'DSA'),
+    'Backend': ('🛠️', 'Backend'),
+    'HR': ('🧑\u200d💼', 'HR'),
+}
+
+
+@login_required
+def category_view(request, category_name):
+
+    search = request.GET.get('search')
+
+    bookmarks = Bookmark.objects.filter(
+        user=request.user
+    ).values_list('question_id', flat=True)
+
+    questions = Question.objects.filter(category=category_name).order_by('-id')
+
+    if search:
+        questions = questions.filter(title__icontains=search)
+
+    paginator = Paginator(questions, 9)
+    page_number = request.GET.get('page')
+    questions = paginator.get_page(page_number)
+
+    icon, display_name = CATEGORY_DISPLAY_NAMES.get(category_name, ('📁', category_name))
+
+    return render(request, 'category.html', {
+        'questions': questions,
+        'category_name': category_name,
+        'category_display': display_name,
+        'category_icon': icon,
+        'total_in_category': Question.objects.filter(category=category_name).count(),
+        'bookmarks': bookmarks
+    })
+
        
 @login_required
 def edit_question(request, id):
@@ -183,7 +228,7 @@ def toggle_bookmark(request, id):
             question=question
         )
 
-    return redirect('/dashboard/')
+    return redirect(request.META.get('HTTP_REFERER', '/dashboard/'))
 
 @login_required
 def bookmarked_questions(request):
@@ -201,6 +246,11 @@ def question_detail(request, id):
 
     question = Question.objects.get(id=id)
 
+    bookmarks = Bookmark.objects.filter(
+        user=request.user
+    ).values_list('question_id', flat=True)
+
     return render(request, 'question_detail.html', {
-        'question': question
+        'question': question,
+        'bookmarks': bookmarks
     })

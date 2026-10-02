@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">{{ category_icon }} {{ category_display }}</span>
+            <h1>{{ category_display }} <span>Interview Questions</span></h1>
+            <p>Practice all {{ total_in_category }} {{ category_display }} questions, one at a time.</p>
+        </div>
+        <div class="hero-card">
+            <h2>{{ total_in_category }}</h2>
+            <p>Total Questions</p>
+        </div>
+    </section>
+
+    <section class="search-section">
+        <form method="GET" class="search-form">
+            <input
+                type="text"
+                name="search"
+                placeholder="🔍  Search in {{ category_display }}..."
+                value="{{ request.GET.search }}"
+            >
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="category-pills">
+            <a href="/dashboard/" class="pill">← All Categories</a>
+        </div>
+    </section>
+
+    <section class="question-grid" id="questions">
+
+        {% for question in questions %}
+        <div class="question-card">
+            <div class="question-top">
+                <span class="category">{{ question.category }}</span>
+                <a href="/bookmark/{{ question.id }}/" class="bookmark">
+                    {% if question.id in bookmarks %}⭐{% else %}☆{% endif %}
+                </a>
+            </div>
+            <a href="/question/{{ question.id }}/?from=/category/{{ category_name }}/">
+                <h3>{{ question.title }}</h3>
+            </a>
+            <div class="question-actions">
+                <span class="difficulty">Easy</span>
+                <button type="button" class="answer-btn" onclick="toggleAnswer('answer{{ question.id }}')">
+                    View Answer
+                </button>
+                {% if request.user.is_superuser %}
+                <a href="/edit-question/{{ question.id }}/" class="edit-btn">✏️ Edit</a>
+                <a href="/delete-question/{{ question.id }}/" class="delete-btn" onclick="return confirm('Delete karna chahte ho?')">🗑️ Delete</a>
+                {% endif %}
+            </div>
+            <div class="answer-box" id="answer{{ question.id }}">
+                {{ question.answer }}
+            </div>
+        </div>
+        {% empty %}
+        <div class="empty-box">
+            <h2>No Questions Found 😔</h2>
+            <p>Try a different search term</p>
+        </div>
+        {% endfor %}
+
+    </section>
+
+    <div class="pagination">
+        {% if questions.has_previous %}
+        <a href="?page={{ questions.previous_page_number }}&search={{ request.GET.search }}">← Previous</a>
+        {% endif %}
+        <span>Page {{ questions.number }} of {{ questions.paginator.num_pages }}</span>
+        {% if questions.has_next %}
+        <a href="?page={{ questions.next_page_number }}&search={{ request.GET.search }}">Next →</a>
+        {% endif %}
+    </div>
+
+</div>
+
+<script>
+function toggleAnswer(id) {
+    const answer = document.getElementById(id);
+    answer.classList.toggle("show");
+    const btn = answer.previousElementSibling.querySelector('.answer-btn');
+    if (answer.classList.contains('show')) {
+        btn.textContent = 'Hide Answer';
+    } else {
+        btn.textContent = 'View Answer';
+    }
+}
+</script>
+
+{% endblock %}
